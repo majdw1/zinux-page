@@ -1,131 +1,96 @@
-body{
-  margin:0;background:#02020A;font-family:Poppins;color:white;overflow-x:hidden;
-}
 
-/* Neon Aurora Background */
+/* Base */
+body{margin:0;background:#02020A;font-family:Poppins;color:white;overflow-x:hidden;}
 .bg-aurora{
   position:fixed;inset:0;
-  background:
-    radial-gradient(circle at 20% 30%,rgba(0,255,255,0.25),transparent 60%),
-    radial-gradient(circle at 80% 20%,rgba(255,0,255,0.25),transparent 60%),
-    radial-gradient(circle at 50% 90%,rgba(0,140,255,0.25),transparent 60%);
+  background: radial-gradient(circle at 20% 30%,rgba(0,255,255,0.25),transparent 60%),
+              radial-gradient(circle at 80% 20%,rgba(255,0,255,0.25),transparent 60%),
+              radial-gradient(circle at 50% 90%,rgba(0,140,255,0.25),transparent 60%);
   animation: aurora 16s infinite alternate ease-in-out;
   z-index:-3;
 }
-@keyframes aurora{
-  0%{transform:scale(1);}
-  100%{transform:scale(1.15) translateY(-20px);}
-}
+@keyframes aurora{0%{transform:scale(1);}100%{transform:scale(1.2) translateY(-20px);}}
 
-/* CRT Scanlines */
+/* Scanlines */
 .scanlines{
-  pointer-events:none;
-  position:fixed;inset:0;
-  background: repeating-linear-gradient(
-      to bottom,
-      rgba(255,255,255,0.03) 0px,
-      rgba(255,255,255,0.03) 1px,
-      transparent 2px,
-      transparent 4px
+  pointer-events:none;position:fixed;inset:0;
+  background: repeating-linear-gradient(to bottom,
+    rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px,
+    transparent 2px, transparent 4px
   );
   z-index:-2;
 }
 
 /* Navigation */
-.nav{position:sticky;top:0;padding:16px 0;background:rgba(0,0,0,0.3);backdrop-filter:blur(10px);}
+.nav{position:sticky;top:0;padding:14px 0;background:rgba(0,0,0,0.35);backdrop-filter:blur(10px);}
 .nav-inner{max-width:900px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:0 16px;}
-.logo{font-size:22px;font-weight:600;}
-.logo span{color:#0ff;}
-.nav-links{display:flex;gap:20px;}
-.nav-links a{color:#aaa;text-decoration:none;font-size:14px;transition:.2s;}
-.nav-links a:hover{color:#0ff;}
+
+.logo{display:flex;align-items:center;gap:12px;}
+.logo-text{font-size:22px;font-weight:600;}
+.digital{color:#50d7ff;text-shadow:0 0 12px #50d7ff;}
+
+.logo-svg svg{width:50px;height:50px;}
+
+/* Mobile nav */
 .nav-btn{display:none;background:none;border:none;color:white;font-size:28px;}
+.nav-links{display:flex;gap:20px;}
+.nav-links a{color:#aaa;text-decoration:none;}
+.nav-links a:hover{color:#0ff;}
 
 @media(max-width:700px){
-  .nav-links{display:none;flex-direction:column;background:#05050B;padding:12px;border-radius:12px;}
   .nav-btn{display:block;}
+  .nav-links{display:none;flex-direction:column;background:#05050B;padding:12px;border-radius:12px;}
 }
 
 /* Hero */
 .hero{padding:100px 20px 60px;max-width:900px;margin:auto;text-align:center;}
-.hero-content h1{font-size:42px;margin-bottom:10px;}
-.hero-content h1 span{color:#0ff;}
+.hero h1 span{color:#0ff;}
 .glow{text-shadow:0 0 20px #0ff;}
-.glow-sm{text-shadow:0 0 12px #0ff;}
-
 .btn-group{margin-top:20px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+
 .btn{padding:10px 20px;border-radius:12px;text-decoration:none;font-weight:500;}
+.neon-btn{background:#0ff;color:black;box-shadow:0 0 16px #0ff;}
+.neon-btn:hover{box-shadow:0 0 26px #0ff;}
 
-.neon-btn{
-  background:#0ff;color:black;
-  box-shadow:0 0 16px #0ff;
-  transition:.2s;
-}
-.neon-btn:hover{box-shadow:0 0 28px #0ff;transform:scale(1.05);}
-
-.outline{
-  border:2px solid #0ff;color:#0ff;
-}
+.outline{border:2px solid #0ff;color:#0ff;}
 .outline:hover{background:#0ff;color:black;}
 
+/* Floating card */
 .float-card{
-  margin:40px auto 0;
-  width:260px;
-  background:rgba(0,0,0,0.5);
-  padding:20px;border-radius:16px;
-  backdrop-filter:blur(10px);
-  box-shadow:0 0 20px rgba(0,255,255,0.4);
-  animation: float 3s infinite ease-in-out;
+  margin:40px auto;width:260px;
+  background:rgba(0,0,0,0.5);padding:20px;border-radius:16px;
+  backdrop-filter:blur(12px);box-shadow:0 0 20px rgba(0,255,255,0.4);
+  animation:float 3s infinite ease-in-out;
 }
-@keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-8px);}
-}
-.stat{margin-top:8px;font-size:20px;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+
+/* Stats */
 .pulse{color:#0f0;text-shadow:0 0 10px #0f0;animation:pulse 1.4s infinite;}
-@keyframes pulse{
-  0%,100%{opacity:.6;}
-  50%{opacity:1;}
-}
+@keyframes pulse{0%,100%{opacity:.6;}50%{opacity:1;}}
 
 /* Services */
-.services{padding:60px 20px;text-align:center;}
-.service-grid{
-  max-width:900px;margin:auto;
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:20px;margin-top:20px;
-}
+.services{text-align:center;padding:50px 20px;}
+.service-grid{max-width:900px;margin:auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
 .neon-card{
-  background:rgba(0,0,0,0.4);
-  padding:20px;border-radius:16px;
-  box-shadow:0 0 14px rgba(0,255,255,0.2);
-  border:1px solid rgba(0,255,255,0.3);
-  animation: fadeUp .8s ease-out;
+  background:rgba(0,0,0,0.4);padding:20px;border-radius:16px;
+  box-shadow:0 0 14px rgba(0,255,255,0.2);border:1px solid rgba(0,255,255,0.3);
+  animation:fadeUp .8s ease-out;
 }
 .delay1{animation-delay:.2s;}
 .delay2{animation-delay:.4s;}
-
-@keyframes fadeUp{
-  0%{opacity:0;transform:translateY(20px);}
-  100%{opacity:1;transform:translateY(0);}
-}
+@keyframes fadeUp{0%{opacity:0;transform:translateY(20px);}100%{opacity:1;transform:translateY(0);}}
 
 /* Contact */
-.contact{padding:60px 20px;text-align:center;}
-.contact-form{
-  margin:auto;max-width:420px;
-  display:flex;flex-direction:column;gap:12px;
-}
-.contact-form input, .contact-form textarea{
+.contact{text-align:center;padding:50px 20px;}
+.contact-form{margin:auto;max-width:420px;display:flex;flex-direction:column;gap:12px;}
+.contact-form input,.contact-form textarea{
   padding:12px;border-radius:10px;border:2px solid rgba(0,255,255,0.3);
-  background:rgba(0,0,0,0.5);color:#fff;
+  background:rgba(0,0,0,0.5);color:white;
 }
-.full{width:100%;}
 
-/* WhatsApp Floating */
+/* WhatsApp floating */
 .wa-floating{
   position:fixed;right:16px;bottom:16px;width:56px;height:56px;
-  background:#25D366;border-radius:50%;
-  box-shadow:0 0 20px #25D366;
+  background:#25D366;border-radius:50%;box-shadow:0 0 20px #25D366;
 }
-
