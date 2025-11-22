@@ -1,2 +1,0 @@
-const rev=document.querySelectorAll('.reveal');function check(){rev.forEach(e=>{if(e.getBoundingClientRect().top<window.innerHeight*0.85)e.classList.add('visible')})}
-window.addEventListener('scroll',check);window.onload=check;
